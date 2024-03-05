@@ -7,6 +7,8 @@ for (var i = 0; i < drumButtons; i++){
 
 function operation() {
     let btn = this.innerText; 
+    buttonAnimation(btn);
+
     if(btn === "w"){
         sound.src = "./sounds/crash.mp3"; 
         sound.play(); 
@@ -52,6 +54,8 @@ document.addEventListener("keypress", function(event) {
 }); 
 
 function makeSound(btn){
+    buttonAnimation(btn);
+
     if(btn === "w"){
         sound.src = "./sounds/crash.mp3"; 
         sound.play(); 
@@ -86,4 +90,13 @@ function makeSound(btn){
         sound.src = "./sounds/tom-4.mp3"; 
         sound.play(); 
     }
+}
+
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("." + currentKey); 
+    activeButton.classList.add("pressed"); 
+
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+      }, 1000);
 }
